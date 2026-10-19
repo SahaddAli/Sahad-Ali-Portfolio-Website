@@ -1,0 +1,14 @@
+# Local dev artifacts
+temporary screenshots/
+node_modules/
+
+# Design reference (not part of the site)
+dribbble.com_shots_*.png
+
+# Old drafts
+old-gallery-version.html
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/

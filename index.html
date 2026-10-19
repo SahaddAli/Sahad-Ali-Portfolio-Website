@@ -1,0 +1,367 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sahad, aspiring AI product manager</title>
+  <meta name="description" content="Portfolio of Sahad, a final-year Business Management with Innovation and Technology student working towards AI product management." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700&family=Hanken+Grotesk:wght@400;500;600&family=Fira+Code:wght@700&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            paper: '#F3F6F5',
+            ink: { DEFAULT: '#132321', soft: '#4A5B58', faint: '#7C8B88' },
+            jade: { DEFAULT: '#0E6B60', deep: '#073F39', mist: '#D7E6E2', wash: '#E8F0EE' },
+            apricot: '#EE9F5B',
+          },
+          fontFamily: {
+            display: ['"Bricolage Grotesque"', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+            body: ['"Hanken Grotesk"', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+          },
+        },
+      },
+    };
+  </script>
+  <style>
+    :root {
+      --spring: cubic-bezier(.34, 1.56, .64, 1);
+      --ease-out: cubic-bezier(.22, 1, .36, 1);
+      /* spacing tokens */
+      --s-1: 8px; --s-2: 16px; --s-3: 24px; --s-4: 40px; --s-5: 64px; --s-6: 112px;
+      /* depth system: base → elevated → floating */
+      --shadow-elevated: 0 1px 2px rgba(7, 63, 57, .06), 0 8px 24px -10px rgba(7, 63, 57, .16);
+      --shadow-floating: 0 2px 4px rgba(7, 63, 57, .06), 0 18px 40px -12px rgba(7, 63, 57, .26), 0 40px 80px -30px rgba(7, 63, 57, .22);
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Hanken Grotesk', ui-sans-serif, system-ui, sans-serif;
+      background: #F3F6F5;
+      color: #132321;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+    h1, h2, h3 { font-family: 'Bricolage Grotesque', ui-sans-serif, system-ui, sans-serif; letter-spacing: -0.03em; line-height: 1.05; text-wrap: balance; }
+    .section { padding-block: var(--s-6); }
+    @media (max-width: 767px) { .section { padding-block: var(--s-5); } }
+
+    /* hero atmosphere: layered radial gradients + grain */
+    .hero-bg {
+      background:
+        radial-gradient(60% 55% at 85% 10%, rgba(14, 107, 96, .16), transparent 70%),
+        radial-gradient(45% 40% at 10% 90%, rgba(238, 159, 91, .14), transparent 70%),
+        radial-gradient(35% 35% at 55% 55%, rgba(215, 230, 226, .7), transparent 70%);
+    }
+    .grain::after {
+      content: ''; position: absolute; inset: 0; pointer-events: none; opacity: .35; mix-blend-mode: multiply;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.07 0 0 0 0 0.14 0 0 0 0 0.13 0 0 0 .18 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    }
+
+    /* the hypothesis slots */
+    .slot {
+      cursor: pointer; color: #0E6B60; border-radius: 4px; padding: 0 .06em;
+      background: linear-gradient(transparent 62%, rgba(14, 107, 96, .14) 62%);
+      -webkit-box-decoration-break: clone; box-decoration-break: clone;
+      transition: opacity .18s var(--ease-out);
+    }
+    .slot:hover { background: linear-gradient(transparent 62%, rgba(14, 107, 96, .26) 62%); }
+    .slot:focus-visible { outline: 3px solid #EE9F5B; outline-offset: 4px; }
+    .slot:active { opacity: .7; }
+    .slot.is-swapping { opacity: 0; }
+
+    /* buttons */
+    .btn {
+      display: inline-flex; align-items: center; gap: 10px; border-radius: 999px; padding: 14px 26px;
+      font-weight: 600; font-size: 15px; line-height: 1;
+      transition: transform .4s var(--spring), opacity .2s ease, box-shadow .3s var(--ease-out);
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn:active { transform: translateY(0) scale(.97); }
+    .btn:focus-visible { outline: 3px solid #EE9F5B; outline-offset: 3px; }
+    .btn-primary { background: #0E6B60; color: #F3F6F5; box-shadow: var(--shadow-elevated); }
+    .btn-primary:hover { box-shadow: var(--shadow-floating); }
+    .btn-ghost { color: #132321; box-shadow: inset 0 0 0 1.5px rgba(19, 35, 33, .18); }
+    .btn-ghost:hover { box-shadow: inset 0 0 0 1.5px rgba(19, 35, 33, .5); }
+    .btn-light { background: #F3F6F5; color: #073F39; }
+    .btn-outline-light { color: #F3F6F5; box-shadow: inset 0 0 0 1.5px rgba(243, 246, 245, .35); }
+    .btn-outline-light:hover { box-shadow: inset 0 0 0 1.5px rgba(243, 246, 245, .8); }
+
+    .link { position: relative; transition: color .2s ease; }
+    .link::after {
+      content: ''; position: absolute; left: 0; right: 0; bottom: -3px; height: 1.5px; background: currentColor;
+      transform: scaleX(0); transform-origin: left; transition: transform .35s var(--ease-out);
+    }
+    .link:hover::after, .link:focus-visible::after { transform: scaleX(1); }
+    .link:focus-visible { outline: 2px solid #EE9F5B; outline-offset: 4px; border-radius: 2px; }
+    .link:active { opacity: .6; }
+
+    /* project media treatment */
+    .media { position: relative; overflow: hidden; isolation: isolate; }
+    .media img { transition: transform .9s var(--ease-out); }
+    .media::before { content: ''; position: absolute; inset: 0; background: #0E6B60; mix-blend-mode: multiply; opacity: .45; z-index: 1; }
+    .project:hover .media img, .project:focus-within .media img { transform: scale(1.04); }
+
+    /* one orchestrated entrance, hero only */
+    .rise { opacity: 0; transform: translateY(18px); animation: rise .9s var(--ease-out) forwards; }
+    @keyframes rise { to { opacity: 1; transform: none; } }
+
+    /* giant name behind the hero headline */
+    .hero-name {
+      position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center;
+      pointer-events: none; user-select: none; overflow: hidden;
+      font-family: 'Fira Code', ui-monospace, monospace; font-weight: 700; text-transform: uppercase;
+      font-size: clamp(112px, max(29vw - 40px, 23vw), 340px); line-height: .78; letter-spacing: -0.06em; white-space: nowrap;
+      color: rgba(14, 107, 96, .085);
+    }
+    .hero-name span { display: inline-block; opacity: 0; transform: translateY(-20px); animation: drop .7s var(--ease-out) forwards; animation-delay: calc(var(--i) * 100ms + .2s); }
+    @keyframes drop { to { opacity: 1; transform: none; } }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation: none !important; transition: none !important; }
+      .rise, .hero-name span { opacity: 1; transform: none; }
+      html { scroll-behavior: auto; }
+    }
+  </style>
+</head>
+<body>
+  <a href="#work" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 btn btn-primary">Skip to projects</a>
+
+  <!-- NAV -->
+  <header class="fixed inset-x-0 top-0 z-40">
+    <nav class="mx-auto mt-3 flex max-w-6xl items-center justify-between rounded-full bg-paper/80 px-5 py-3 backdrop-blur-md md:px-6" style="box-shadow: var(--shadow-elevated); width: calc(100% - 32px);">
+      <a href="#top" class="link font-display text-lg font-semibold tracking-tight">Sahad</a>
+      <div class="hidden items-center gap-8 text-[15px] text-ink-soft md:flex">
+        <a class="link hover:text-ink" href="#work">Projects</a>
+        <a class="link hover:text-ink" href="#approach">How I work</a>
+        <a class="link hover:text-ink" href="#about">About</a>
+      </div>
+      <a href="#contact" class="btn btn-primary !px-5 !py-2.5 text-sm">Get in touch</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <!-- HERO -->
+    <section class="hero-bg grain relative overflow-hidden">
+      <div class="hero-name" aria-hidden="true">
+        <div><span style="--i:0">S</span><span style="--i:1">a</span><span style="--i:2">h</span><span style="--i:3">a</span><span style="--i:4">d</span></div>
+        <div><span style="--i:5">A</span><span style="--i:6">l</span><span style="--i:7">i</span></div>
+      </div>
+      <div class="relative z-10 mx-auto max-w-6xl px-4 pb-20 pt-36 md:px-8 md:pb-28 md:pt-48">
+        <p class="rise mb-6 flex items-start gap-3 text-[15px] text-ink-soft" style="animation-delay:.05s">
+          <span class="relative mt-[8px] flex h-2.5 w-2.5 shrink-0"><span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-jade opacity-40"></span><span class="relative inline-flex h-2.5 w-2.5 rounded-full bg-jade"></span></span>
+          Open to graduate roles in AI product management, starting 2027
+        </p>
+
+        <h1 aria-live="polite" class="rise text-[2.6rem] font-semibold text-ink sm:text-6xl md:text-[5.25rem]" style="animation-delay:.15s">
+          I believe
+          <span class="slot" role="button" tabindex="0" data-slot="0" title="Click to change"><span class="slot-text">AI products</span></span>
+          should
+          <span class="slot" role="button" tabindex="0" data-slot="1" title="Click to change"><span class="slot-text">earn trust before they ask for it.</span></span>
+        </h1>
+
+        <p class="rise mt-6 text-sm text-ink-faint" style="animation-delay:.3s">Click the highlighted words. These are the bets I'd build around.</p>
+
+        <div class="rise mt-12 grid gap-10 md:grid-cols-[1.1fr_1fr] md:items-end" style="animation-delay:.4s">
+          <p class="max-w-xl text-lg text-ink-soft md:text-xl">
+            I'm Sahad, a final-year Business Management with Innovation and Technology student. I sit between the people who use a product, the people who build it, and the numbers that say whether it's working. Below are the projects where I've practised that.
+          </p>
+          <div class="flex flex-wrap gap-3 md:justify-end">
+            <a href="#work" class="btn btn-primary">See my projects</a>
+            <a href="#" class="btn btn-ghost">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m0 0-5-5m5 5 5-5M5 21h14"/></svg>
+              Download CV
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="work" class="section">
+      <div class="mx-auto max-w-6xl px-4 md:px-8">
+        <div class="mb-14 grid gap-6 md:grid-cols-[1fr_1fr] md:items-end">
+          <h2 class="text-4xl font-semibold md:text-6xl">Selected projects</h2>
+          <p class="max-w-md text-ink-soft md:justify-self-end">Each one is written up the way I'd brief a team: the problem, what I did, and what changed.</p>
+        </div>
+
+        <!-- featured project: floating layer -->
+        <article class="project group relative rounded-[28px] bg-white p-3 md:p-4" style="box-shadow: var(--shadow-floating);">
+          <div class="grid gap-6 md:grid-cols-[1.15fr_1fr] md:gap-10">
+            <div class="media aspect-[4/3] rounded-[20px] md:aspect-auto md:min-h-[420px]">
+              <img src="https://placehold.co/900x700/0E6B60/F3F6F5?text=Project+screenshot" alt="Placeholder for the StudyMate assistant project" class="absolute inset-0 h-full w-full object-cover" />
+              <div class="absolute inset-0 z-[2] bg-gradient-to-t from-black/60 via-black/0"></div>
+              <span class="absolute bottom-5 left-5 z-[3] rounded-full bg-paper/90 px-3 py-1 text-sm font-medium text-jade-deep backdrop-blur">Dissertation project</span>
+            </div>
+            <div class="flex flex-col px-2 pb-4 md:py-6 md:pr-6">
+              <h3 class="text-3xl font-semibold md:text-[2.5rem]">StudyMate: an AI study assistant students actually trust</h3>
+              <dl class="mt-8 space-y-5 text-[15px]">
+                <div>
+                  <dt class="font-semibold text-ink">Problem</dt>
+                  <dd class="mt-1 text-ink-soft">Students were using general chatbots for revision, but 6 in 10 I surveyed didn't trust the answers enough to rely on them.</dd>
+                </div>
+                <div>
+                  <dt class="font-semibold text-ink">What I did</dt>
+                  <dd class="mt-1 text-ink-soft">Ran 18 user interviews, wrote the product requirements, and prototyped a source-citing assistant built on course materials.</dd>
+                </div>
+                <div>
+                  <dt class="font-semibold text-ink">Outcome</dt>
+                  <dd class="mt-1 text-ink-soft">Trust scores rose from 2.9 to 4.3 out of 5 in usability testing with 24 students.</dd>
+                </div>
+              </dl>
+              <a href="#" class="link mt-auto self-start pt-8 font-semibold text-jade">Read the case study</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- secondary projects: elevated layer -->
+        <div class="mt-8 grid gap-8 md:grid-cols-2">
+          <article class="project group rounded-[22px] bg-white p-3" style="box-shadow: var(--shadow-elevated);">
+            <div class="media aspect-[16/10] rounded-[16px]">
+              <img src="https://placehold.co/800x500/073F39/F3F6F5?text=Project+image" alt="Placeholder for the demand forecasting project" class="absolute inset-0 h-full w-full object-cover" />
+              <div class="absolute inset-0 z-[2] bg-gradient-to-t from-black/60 via-black/0"></div>
+              <span class="absolute bottom-4 left-4 z-[3] rounded-full bg-paper/90 px-3 py-1 text-sm font-medium text-jade-deep">Consulting module</span>
+            </div>
+            <div class="px-3 pb-4 pt-6">
+              <h3 class="text-2xl font-semibold">Cutting food waste with demand forecasting</h3>
+              <p class="mt-3 text-[15px] text-ink-soft">Scoped a forecasting tool for a campus café, sized the opportunity, and pitched a 90-day pilot. The projected waste reduction was 22%.</p>
+              <a href="#" class="link mt-5 inline-block font-semibold text-jade">Read the case study</a>
+            </div>
+          </article>
+
+          <article class="project group rounded-[22px] bg-white p-3" style="box-shadow: var(--shadow-elevated);">
+            <div class="media aspect-[16/10] rounded-[16px]">
+              <img src="https://placehold.co/800x500/0E6B60/F3F6F5?text=Project+image" alt="Placeholder for the responsible AI toolkit project" class="absolute inset-0 h-full w-full object-cover" />
+              <div class="absolute inset-0 z-[2] bg-gradient-to-t from-black/60 via-black/0"></div>
+              <span class="absolute bottom-4 left-4 z-[3] rounded-full bg-paper/90 px-3 py-1 text-sm font-medium text-jade-deep">Innovation module</span>
+            </div>
+            <div class="px-3 pb-4 pt-6">
+              <h3 class="text-2xl font-semibold">A responsible AI checklist for small businesses</h3>
+              <p class="mt-3 text-[15px] text-ink-soft">Turned AI regulation and ethics guidance into a one-page checklist and tested it with 5 local business owners deciding whether to adopt AI tools.</p>
+              <a href="#" class="link mt-5 inline-block font-semibold text-jade">Read the case study</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- APPROACH (a real sequence) -->
+    <section id="approach" class="section bg-jade-wash">
+      <div class="mx-auto max-w-6xl px-4 md:px-8">
+        <h2 class="max-w-2xl text-4xl font-semibold md:text-6xl">How I take an idea from problem to product</h2>
+        <ol class="relative mt-16 grid gap-10 md:grid-cols-4 md:gap-8">
+          <span class="absolute left-0 right-0 top-[22px] hidden h-px bg-jade/25 md:block" aria-hidden="true"></span>
+          <li class="relative">
+            <span class="relative flex h-11 w-11 items-center justify-center rounded-full bg-paper font-display text-lg font-semibold text-jade" style="box-shadow: var(--shadow-elevated);">1</span>
+            <h3 class="mt-6 text-xl font-semibold">Discover</h3>
+            <p class="mt-2 text-[15px] text-ink-soft">Talk to users before touching a model. Find the job they're hiring the product to do.</p>
+          </li>
+          <li class="relative">
+            <span class="relative flex h-11 w-11 items-center justify-center rounded-full bg-paper font-display text-lg font-semibold text-jade" style="box-shadow: var(--shadow-elevated);">2</span>
+            <h3 class="mt-6 text-xl font-semibold">Define</h3>
+            <p class="mt-2 text-[15px] text-ink-soft">Write the problem down, decide what success looks like, and agree on what we won't build.</p>
+          </li>
+          <li class="relative">
+            <span class="relative flex h-11 w-11 items-center justify-center rounded-full bg-paper font-display text-lg font-semibold text-jade" style="box-shadow: var(--shadow-elevated);">3</span>
+            <h3 class="mt-6 text-xl font-semibold">Prototype</h3>
+            <p class="mt-2 text-[15px] text-ink-soft">Build the cheapest version that answers the riskiest question, often with no-code tools and an LLM.</p>
+          </li>
+          <li class="relative">
+            <span class="relative flex h-11 w-11 items-center justify-center rounded-full bg-paper font-display text-lg font-semibold text-jade" style="box-shadow: var(--shadow-elevated);">4</span>
+            <h3 class="mt-6 text-xl font-semibold">Measure</h3>
+            <p class="mt-2 text-[15px] text-ink-soft">Test with real people, check where the AI gets things wrong, and decide whether to keep going.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="section">
+      <div class="mx-auto grid max-w-6xl gap-12 px-4 md:grid-cols-[0.8fr_1.2fr] md:gap-20 md:px-8">
+        <div class="media aspect-[4/5] self-start rounded-[28px]" style="box-shadow: var(--shadow-floating);">
+          <img src="https://placehold.co/600x750/D7E6E2/073F39?text=Your+photo" alt="Placeholder for a portrait of Sahad" class="absolute inset-0 h-full w-full object-cover" />
+          <div class="absolute inset-0 z-[2] bg-gradient-to-t from-black/60 via-black/0"></div>
+        </div>
+        <div>
+          <h2 class="text-4xl font-semibold md:text-6xl">About me</h2>
+          <div class="mt-8 max-w-[62ch] space-y-5 text-lg text-ink-soft">
+            <p>My degree in Business Management with Innovation and Technology taught me to look at technology the way a business has to: what problem it solves, who pays for it, and what could go wrong.</p>
+            <p>I'm drawn to AI product management because AI is now easy to build and hard to get right. The difficult part is choosing the right problem and earning people's trust, and that's the work I want to do.</p>
+          </div>
+
+          <h3 class="mt-14 text-2xl font-semibold">Toolkit</h3>
+          <div class="mt-6 grid gap-8 sm:grid-cols-3">
+            <div>
+              <p class="font-semibold text-ink">Product</p>
+              <ul class="mt-3 space-y-1.5 text-[15px] text-ink-soft">
+                <li>User interviews</li><li>Requirements docs</li><li>Roadmapping</li><li>Figma prototypes</li>
+              </ul>
+            </div>
+            <div>
+              <p class="font-semibold text-ink">AI</p>
+              <ul class="mt-3 space-y-1.5 text-[15px] text-ink-soft">
+                <li>Prompt design</li><li>Testing AI output</li><li>No-code AI tools</li><li>Responsible AI</li>
+              </ul>
+            </div>
+            <div>
+              <p class="font-semibold text-ink">Business</p>
+              <ul class="mt-3 space-y-1.5 text-[15px] text-ink-soft">
+                <li>Market sizing</li><li>Financial modelling</li><li>Excel and SQL</li><li>Stakeholder pitches</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="px-4 pb-4 md:px-8 md:pb-8">
+      <div class="grain relative mx-auto max-w-6xl overflow-hidden rounded-[32px] bg-jade-deep px-6 py-16 text-paper md:px-16 md:py-24" style="box-shadow: var(--shadow-floating);">
+        <div class="pointer-events-none absolute inset-0" style="background: radial-gradient(50% 70% at 90% 0%, rgba(14,107,96,.9), transparent 70%), radial-gradient(40% 50% at 0% 100%, rgba(238,159,91,.22), transparent 70%);" aria-hidden="true"></div>
+        <div class="relative z-10 grid gap-10 md:grid-cols-[1.3fr_1fr] md:items-end">
+          <div>
+            <h2 class="text-4xl font-semibold md:text-6xl">Hiring for a product role? Let's talk.</h2>
+            <p class="mt-6 max-w-lg text-lg text-paper/75">I'm looking for graduate schemes, internships and associate product manager roles in AI. I reply within a day.</p>
+          </div>
+          <div class="flex flex-col gap-3 sm:flex-row md:flex-col md:items-end">
+            <a href="mailto:your.email@example.com" class="btn btn-light">Email me</a>
+            <a href="#" class="btn btn-outline-light">Connect on LinkedIn</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="mx-auto flex max-w-6xl flex-col gap-2 px-4 py-10 text-sm text-ink-faint sm:flex-row sm:justify-between md:px-8">
+    <p>© 2026 Sahad</p>
+    <a href="#top" class="link self-start hover:text-ink">Back to top</a>
+  </footer>
+
+  <script>
+    // Each slot cycles through its own list of options when clicked.
+    const options = [
+      ['AI products', 'recommendations', 'AI assistants', 'automation'],
+      ['earn trust before they ask for it.', 'explain themselves in plain language.', 'make people better at their jobs.', 'be tested with real users, early.'],
+    ];
+    const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    document.querySelectorAll('.slot').forEach((slot) => {
+      const list = options[slot.dataset.slot];
+      let i = 0;
+      const swap = () => {
+        i = (i + 1) % list.length;
+        const text = slot.querySelector('.slot-text');
+        if (reduce) { text.textContent = list[i]; return; }
+        slot.classList.add('is-swapping');
+        setTimeout(() => { text.textContent = list[i]; slot.classList.remove('is-swapping'); }, 180);
+      };
+      slot.addEventListener('click', swap);
+      slot.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); swap(); }
+      });
+    });
+  </script>
+</body>
+</html>
